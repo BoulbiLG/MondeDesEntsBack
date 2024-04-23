@@ -21,8 +21,6 @@ router.post('/posterCommentaire', async (req, res) => {
     // Enregistrement du commentaire dans la base de données
     await nouveauCommentaire.save();
 
-    console.log('Commentaire ajouté avec succès:', nouveauCommentaire);
-
     res.status(201).json({ message: 'Commentaire ajouté avec succès.' });
   } catch (error) {
     console.error('Erreur lors de l\'ajout du commentaire:', error);

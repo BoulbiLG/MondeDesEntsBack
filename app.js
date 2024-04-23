@@ -6,6 +6,9 @@ const inscription = require('./route/compte/inscription');
 const connexion = require('./route/compte/connexion');
 const posterCommentaire = require('./route/commentaire/posterCommentaire');
 const recupererCommentaire = require('./route/commentaire/recupererCommentaire');
+const creerPartie = require('./route/partie/creerPartie');
+const chargerPartie = require('./route/partie/chargerPartie');
+const recupererPartie = require('./route/partie/recupererPartie');
 
 const app = express();
 app.use(bodyParser.json());
@@ -26,6 +29,9 @@ app.use('/compte', inscription);
 app.use('/compte', connexion);
 app.use('/compte', posterCommentaire);
 app.use('/compte', recupererCommentaire);
+app.use('/compte', creerPartie);
+app.use('/compte', chargerPartie);
+app.use('/compte', recupererPartie);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Serveur démarré sur le port ${PORT}`));
