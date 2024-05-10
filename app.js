@@ -9,13 +9,14 @@ const recupererCommentaire = require('./route/commentaire/recupererCommentaire')
 const creerPartie = require('./route/partie/creerPartie');
 const chargerPartie = require('./route/partie/chargerPartie');
 const recupererPartie = require('./route/partie/recupererPartie');
+const sauvegarder = require('./route/sauvegarde/sauvegarder');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
 // Connexion à MongoDB
-mongoose.connect('mongodb+srv://Cazeneuve:VoRL8AkWCaI2EKHo@mongoprojet.i1jwgpa.mongodb.net/MondeDesEnts?retryWrites=true&w=majority&appName=MongoProjet', {
+mongoose.connect('mongodb+srv://Cazeneuve:VoRL8AkWCaI2EKHo@mongoprojet.i1jwgpa.mongodb.net/?retryWrites=true&w=majority&appName=MongoProjet', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -32,6 +33,7 @@ app.use('/compte', recupererCommentaire);
 app.use('/compte', creerPartie);
 app.use('/compte', chargerPartie);
 app.use('/compte', recupererPartie);
+app.use('/compte', sauvegarder);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Serveur démarré sur le port ${PORT}`));
